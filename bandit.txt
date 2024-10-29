@@ -1,0 +1,62 @@
+level 0-1: ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
+level 1-2: 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
+level 2-3: MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
+level 3-4: 2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
+level 4-5: 4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
+level 5-6: HWasnPhtq9AVKe0dmk45nxy20cvUa6EG #tìm file theo size
+level 6-7: morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj #tìm file trong user, group
+level 7-8: dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc #tìm string trong dòng giong json vd : cat a.txt |grep "n1"
+level 8-9: 4CKMh1JI91bUIZZPXDqGanal4xvAg0JM #tìm password chỉ xuất hiện trong 1 lần all dòng vd: cat data.txt |sort|uniq -u
+level 9-10: FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey #tìm dòng co ki tự = ở đầu vd:  strings data.txt |grep "="
+level 10-11: dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr #decode base64 vd: cat data.txt |base64 -d
+level 11-12: 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4 #decode rot13 : A+13=N script: cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+level 12-13: FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn #decrypt file tar gz2 gz bz2 rename file tạo file , copy file ...
+level 13-14: MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS #login user bandit14 sshkey rsa vd:ssh localhost -p 2220 -i sshkey.private -l bandit14
+level 14-15: 8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo #send text lên máy chủ vd: echo "MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS" | nc localhost 30000
+level 15-16: kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx #kết nối ssl và gửi pass vd: openssl s_client -connect localhost:30001     pass
+level 16-17: EReVavePLFHtFlFsjn3hyzMlvSuSAcRD #dò xem cổng nào mở nmap -p 31000-32000 -v localhost #check giao thức...: nmap -A -p 31046,31518,31691,31790,31960 localhost -> 31790 connect port 31790 #openssl s_client -connect localhost:31790 or ncat --ssl localhost 31790 
+mktemp -d tạo file tmp random,  touch sshkey #tạo file , nano sshkey #ghi file , chmod 777 sshkey # cấp quyền , chmod 6000 sshkey 
+ ssh localhost -i pvt.key -l bandit17 -p 2220
+
+level 17-18:x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO  #diff passwords.old passwords.new
+level 18-19:cGWpMaKXVwDUNgPAVJbWYuGHVn9zl3j8 # theem -T vào ssh để tắt pseudo-terminal vd: ssh bandit18@bandit.labs.overthewire.org -p 2220 -T
+level 19-20: 0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO #chạy dưới quyền của th bandit 20   vd:./bandit20-do cat /etc/bandit_pass/bandit20
+level 20-21: EeoULMCra2q0dSkYj561DX7s1CpBuOBt 2tab tab1: mở port netcat -nlvp 9999  tab2: ./suconnect 9999
+level 21-22: tRae0UfB9v0UzbCdn9cY0gQnds9GF58Q #cd /etc/cron.d #cat cronjob_bandit22 #cat /usr/bin/cronjob_bandit22.sh #cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+level 22-23: 0Zf11ioIjMVN551jX3CmStKLYqjk54Ga doc file bash#echo "I am user bandit23" |md5sum |cut -d ' ' -f 1 #cat /tmp/8ca319486bfbbc3663ea0fbe81326349    
+level 23-24:gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8 
+code : '''#!/bin/bash
+
+cat /etc/bandit_pass/bandit24 > /tmp/tmp.cnOoNEoKDH/flag'''
+
+#cp script.sh /var/spool/bandit24/foo
+
+level 24-25: iCi86ttT4KSNe1armKiwbQNmB3YJP3q4 kết nối ncat đến localhost port 30002 và thử all pass từ 0000-9999
+#touch main.py
+#chmod 777 main.py
+#nano main.py
+#code python: 
+with open("duc.txt","a") as f:
+	for otp in range(0000,10000):
+		text = f"gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8 {otp:04}\n"
+		f.write(text)
+#python3 main.py
+#cat duc.txt|nc localhost 30002
+
+level 25-26: s0773xxkk0MXfdqOfPRVr9L3jJBUOgCZ
+#cat /etc/passwd |grep bandit
+...
+level 26-27: upsNCc7vzaRDx6oZC6GiR6ERwe1MowGB
+
+level 27-28: Yz9IpL0sBcCeuG7m9uQFt8ZNpS4HZRcN #mktemp -d   #git clone 
+level 28-29: 4pT1t5DENaYuqnqvadYs1oE4QLCdjmJ7 check lsu edit #mktemp -d   #git clone #git log #git checkout
+level 29-30: qp30ex3VLz5MDG1n91YowTv4Q8l7CDZL #git branch -a #git checkout dev 
+level 30-31: fb5S2xb7bRyFmAvQYQGEqsbhVyJqhnDy   #git tag #git show secret
+level 31-32: 3O9RfhqyAlVBEZpVb6LYStshZoqoSx5K #git add key.txt -f #git commit -m "them key.txt" #git push origin master
+level 32-33: tQdtbs5D5i2vJwkO8mEyYEyTL8izoeJ0 #$0 #whoami #cat /etc/bandit_pass/bandit33
+level 33-34: ???
+
+
+#bandit.labs.overthewire.org
+#ssh bandit28@bandit.labs.overthewire.org -p 2220
+ssh://bandit31-git@localhost:2220/home/bandit31-git/repo
